@@ -8,7 +8,7 @@ from crewai_tools import SerperDevTool, \
 
 warnings.filterwarnings('ignore')
 openai_api_key = get_openai_api_key()
-os.environ["OPENAI_MODEL_NAME"] = 'gpt-4.1-nano'
+os.environ["OPENAI_MODEL_NAME"] = 'gpt-4o-mini'
 
 # Create the customer support agents
 support_agent = Agent(

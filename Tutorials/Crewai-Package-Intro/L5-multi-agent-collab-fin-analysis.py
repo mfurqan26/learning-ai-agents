@@ -3,9 +3,7 @@ import os
 from crewai import Agent, Task, Crew,Process
 from langchain_openai import ChatOpenAI
 from utils import get_openai_api_key, get_serper_api_key
-from crewai_tools import DirectoryReadTool, \
-                         FileReadTool, \
-                         SerperDevTool, \
+from crewai_tools import SerperDevTool, \
                          ScrapeWebsiteTool
 
 

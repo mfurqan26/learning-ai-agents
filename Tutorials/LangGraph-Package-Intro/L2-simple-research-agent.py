@@ -76,7 +76,6 @@ print(result['messages'][-1].content)
 
 messages = [HumanMessage(content="What is the weather in SF and LA?")]
 result = abot.graph.invoke({"messages": messages})
-print(result)
 print(result['messages'][-1].content)
 
 # Note, the query was modified to produce more consistent results. 

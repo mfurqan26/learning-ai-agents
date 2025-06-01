@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 from langgraph.graph import StateGraph, END
 from langgraph.checkpoint.sqlite import SqliteSaver
+from langgraph.checkpoint.aiosqlite import AsyncSqliteSaver
 from typing import TypedDict, Annotated
 import operator
 from langchain_core.messages import AnyMessage, SystemMessage, HumanMessage, ToolMessage
@@ -65,3 +66,39 @@ for event in abot.graph.stream({"messages": messages}, thread):
     for v in event.values():
         print(v['messages'])
         
+        
+# Streaming Example 2: continued ask about weather in different city
+messages = [HumanMessage(content="What about in la?")]
+thread = {"configurable": {"thread_id": "1"}}
+for event in abot.graph.stream({"messages": messages}, thread):
+    for v in event.values():
+        print(v)
+
+# Streaming Example 3: continued ask about which city is warmer by using thread id
+messages = [HumanMessage(content="Which one is warmer?")]
+thread = {"configurable": {"thread_id": "1"}}
+for event in abot.graph.stream({"messages": messages}, thread):
+    for v in event.values():
+        print(v)
+
+# Streaming Example 4: different thread id will confuse the agent was it does not know previous conversation
+messages = [HumanMessage(content="Which one is warmer?")]
+thread = {"configurable": {"thread_id": "2"}}
+for event in abot.graph.stream({"messages": messages}, thread):
+    for v in event.values():
+        print(v)
+
+
+# Async Example
+memory = AsyncSqliteSaver.from_conn_string(":memory:")
+abot = Agent(model, [tool], system=prompt, checkpointer=memory)
+messages = [HumanMessage(content="What is the weather in SF?")]
+thread = {"configurable": {"thread_id": "4"}}
+async for event in abot.graph.astream_events({"messages": messages}, thread, version="v1"):
+    kind = event["event"]
+    if kind == "on_chat_model_stream":
+        content = event["data"]["chunk"].content
+        if content:
+            # Empty content in the context of OpenAI means that the model is asking for a tool to be invoked.
+            # Print non-empty content
+            print(content, end="|")

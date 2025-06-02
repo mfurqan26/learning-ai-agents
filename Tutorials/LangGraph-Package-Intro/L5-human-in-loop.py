@@ -122,3 +122,70 @@ while abot.graph.get_state(thread).next:
     for event in abot.graph.stream(None, thread):
         for v in event.values():
             print(v)
+
+# Modify state of the thread
+messages = [HumanMessage("Whats the weather in LA?")]
+thread = {"configurable": {"thread_id": "3"}}
+for event in abot.graph.stream({"messages": messages}, thread):
+    for v in event.values():
+        print(v)
+abot.graph.get_state(thread)
+
+current_values = abot.graph.get_state(thread)
+current_values.values['messages'][-1]
+current_values.values['messages'][-1].tool_calls
+_id = current_values.values['messages'][-1].tool_calls[0]['id']
+# Changing the weather query to Louisiana
+current_values.values['messages'][-1].tool_calls = [
+    {'name': 'tavily_search_results_json',
+  'args': {'query': 'current weather in Louisiana'},
+  'id': _id}
+]
+abot.graph.update_state(thread, current_values.values)
+
+# Check the state after update
+abot.graph.get_state(thread)
+for event in abot.graph.stream(None, thread):
+    for v in event.values():
+        print(v)
+        
+# Time travel 
+states = []
+for state in abot.graph.get_state_history(thread):
+    print(state)
+    print('--')
+    states.append(state)
+    
+to_replay = states[-3]
+to_replay
+for event in abot.graph.stream(None, to_replay.config):
+    for k, v in event.items():
+        print(v)
+        
+# Go back in time and edit
+to_replay
+_id = to_replay.values['messages'][-1].tool_calls[0]['id']
+to_replay.values['messages'][-1].tool_calls = [{'name': 'tavily_search_results_json',
+  'args': {'query': 'current weather in LA, accuweather'},
+  'id': _id}]
+branch_state = abot.graph.update_state(to_replay.config, to_replay.values)
+for event in abot.graph.stream(None, branch_state):
+    for k, v in event.items():
+        if k != "__end__":
+            print(v)
+            
+# Add message to a state at a given time
+to_replay
+_id = to_replay.values['messages'][-1].tool_calls[0]['id']
+state_update = {"messages": [ToolMessage(
+    tool_call_id=_id,
+    name="tavily_search_results_json",
+    content="54 degree celcius",
+)]}
+branch_and_add = abot.graph.update_state(
+    to_replay.config, 
+    state_update, 
+    as_node="action")
+for event in abot.graph.stream(None, branch_and_add):
+    for k, v in event.items():
+        print(v)

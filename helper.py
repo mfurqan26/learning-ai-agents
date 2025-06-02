@@ -93,7 +93,7 @@ class ewriter():
             SystemMessage(content=self.RESEARCH_PLAN_PROMPT),
             HumanMessage(content=state['task'])
         ])
-        content = state['content'] or []  # add to content
+        content = state.get('content', [])  # add to content
         for q in queries.queries:
             response = self.tavily.search(query=q, max_results=2)
             for r in response['results']:
@@ -104,7 +104,7 @@ class ewriter():
                 "count": 1,
                }
     def generation_node(self, state: AgentState):
-        content = "\n\n".join(state['content'] or [])
+        content = "\n\n".join(state.get('content', []))
         user_message = HumanMessage(
             content=f"{state['task']}\n\nHere is my plan:\n\n{state['plan']}")
         messages = [
@@ -135,7 +135,7 @@ class ewriter():
             SystemMessage(content=self.RESEARCH_CRITIQUE_PROMPT),
             HumanMessage(content=state['critique'])
         ])
-        content = state['content'] or []
+        content = state.get('content', [])
         for q in queries.queries:
             response = self.tavily.search(query=q, max_results=2)
             for r in response['results']:
@@ -235,23 +235,23 @@ class writer_gui( ):
         for state in self.graph.get_state_history(self.thread):
             if state.metadata['step'] < 1:
                 continue
-            thread_ts = state.config['configurable']['thread_ts']
-            tid = state.config['configurable']['thread_id']
+            s_thread_ts = state.config['configurable'].get('thread_ts', 'N/A')
+            s_tid = state.config['configurable']['thread_id']
             count = state.values['count']
             lnode = state.values['lnode']
             rev = state.values['revision_number']
             nnode = state.next
-            st = f"{tid}:{count}:{lnode}:{nnode}:{rev}:{thread_ts}"
+            st = f"{s_tid}:{count}:{lnode}:{nnode}:{rev}:{s_thread_ts}"
             hist.append(st)
         return gr.Dropdown(label="update_state from: thread:count:last_node:next_node:rev:thread_ts", 
                            choices=hist, value=hist[0],interactive=True)
     
-    def find_config(self,thread_ts):
+    def find_config(self, thread_ts):
         for state in self.graph.get_state_history(self.thread):
             config = state.config
-            if config['configurable']['thread_ts'] == thread_ts:
+            if config['configurable'].get('thread_ts') == thread_ts:
                 return config
-        return(None)
+        return None
             
     def copy_state(self,hist_str):
         ''' result of selecting an old state from the step pulldown. Note does not change thread. 
@@ -304,7 +304,7 @@ class writer_gui( ):
                 for state in self.graph.get_state_history(self.thread):
                     if state.metadata['step'] < 1:  #ignore early states
                         continue
-                    s_thread_ts = state.config['configurable']['thread_ts']
+                    s_thread_ts = state.config['configurable'].get('thread_ts', 'N/A')
                     s_tid = state.config['configurable']['thread_id']
                     s_count = state.values['count']
                     s_lnode = state.values['lnode']

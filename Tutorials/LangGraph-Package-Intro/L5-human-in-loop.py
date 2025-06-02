@@ -99,3 +99,26 @@ for event in abot.graph.stream({"messages": messages}, thread):
         
 abot.graph.get_state(thread)
 abot.graph.get_state(thread).next
+
+# Continue after the interupt
+for event in abot.graph.stream(None, thread):
+    for v in event.values():
+        print(v)
+
+abot.graph.get_state(thread)
+abot.graph.get_state(thread).next
+
+messages = [HumanMessage("Whats the weather in LA?")]
+thread = {"configurable": {"thread_id": "2"}}
+for event in abot.graph.stream({"messages": messages}, thread):
+    for v in event.values():
+        print(v)
+while abot.graph.get_state(thread).next:
+    print("\n", abot.graph.get_state(thread),"\n")
+    _input = input("proceed?")
+    if _input != "y":
+        print("aborting")
+        break
+    for event in abot.graph.stream(None, thread):
+        for v in event.values():
+            print(v)

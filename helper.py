@@ -10,7 +10,7 @@ import operator
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langchain_core.messages import AnyMessage, SystemMessage, HumanMessage, AIMessage, ChatMessage
 from langchain_openai import ChatOpenAI
-from langchain_core.pydantic_v1 import BaseModel
+from pydantic import BaseModel
 from tavily import TavilyClient
 import os
 import sqlite3

@@ -1,0 +1,20 @@
+{
+  "1104.3954v1": {
+    "title": "Invariant Algebras",
+    "authors": [
+      "Keqin Liu"
+    ],
+    "summary": "We introduce invariant algebras and representation$^{(c_1,..., c_8)}$ of\nalgebras, and give many ways of constructing Lie algebras, Jordan algebras,\nLeibniz algebras, pre-Lie algebras and left-symmetric algebras in an invariant\nalgebras.",
+    "pdf_url": "http://arxiv.org/pdf/1104.3954v1",
+    "published": "2011-04-20"
+  },
+  "math/0501518v2": {
+    "title": "Deformation of algebras over the Landweber-Novikov algebra",
+    "authors": [
+      "Donald Yau"
+    ],
+    "summary": "An algebraic deformation theory of algebras over the Landweber-Novikov\nalgebra is obtained.",
+    "pdf_url": "http://arxiv.org/pdf/math/0501518v2",
+    "published": "2005-01-28"
+  }
+}

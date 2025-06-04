@@ -1,0 +1,92 @@
+{
+  "math/0208009v1": {
+    "title": "The Mathematical Universe in a Nutshell",
+    "authors": [
+      "Kannan Nambiar"
+    ],
+    "summary": "The mathematical universe discussed here gives models of possible structures\nour physical universe can have.",
+    "pdf_url": "http://arxiv.org/pdf/math/0208009v1",
+    "published": "2002-08-01"
+  },
+  "2202.00705v1": {
+    "title": "Situating \"Ethics in Mathematics\" as a Philosophy of Mathematics Ethics Education",
+    "authors": [
+      "Dennis M\u00fcller"
+    ],
+    "summary": "In this paper, we situate the educational movement of \"Ethics in\nMathematics,\" as outlined by the Cambridge University Ethics in Mathematics\nProject, in the wider area of mathematics ethics education. By focusing on the\ncore message coming out of Ethics in Mathematics, its target group, and\neducational philosophy, we set it into relation with \"Mathematics for Social\nJustice\" and Paul Ernest's recent work on ethics of mathematics. We conclude\nthat, although both Ethics in Mathematics and Mathematics for Social Justice\nappear antagonistic at first glance, they can be understood as complementary\nrather than competing educational strategies.",
+    "pdf_url": "http://arxiv.org/pdf/2202.00705v1",
+    "published": "2022-02-01"
+  },
+  "0905.0227v1": {
+    "title": "Brief Lecture Notes on Self-Referential Mathematics, and Beyond",
+    "authors": [
+      "Elemer E Rosinger"
+    ],
+    "summary": "Recently delivered lectures on Self-Referential Mathematics, [2], at the\nDepartment of Mathematics and Applied Mathematics, University of Pretoria, are\nbriefly presented. Comments follow on the subject, as well as on Inconsistent\nMathematics.",
+    "pdf_url": "http://arxiv.org/pdf/0905.0227v1",
+    "published": "2009-05-02"
+  },
+  "2011.12141v2": {
+    "title": "Some problems in mathematics and mathematical physics",
+    "authors": [
+      "Alexander Roi Stoyanovsky"
+    ],
+    "summary": "We discuss new approaches to fundamental problems of mathematics and\nmathematical physics such as mathematical foundation of quantum field theory,\nthe Riemann hypothesis, and construction of noncommutative algebraic geometry.",
+    "pdf_url": "http://arxiv.org/pdf/2011.12141v2",
+    "published": "2020-11-22"
+  },
+  "0907.5143v2": {
+    "title": "Categories without structures",
+    "authors": [
+      "Andrei Rodin"
+    ],
+    "summary": "The popular view according to which Category theory provides a support for\nMathematical Structuralism is erroneous. Category-theoretic foundations of\nmathematics require a different philosophy of mathematics. While structural\nmathematics studies invariant forms (Awodey) categorical mathematics studies\ncovariant transformations which, generally, don t have any invariants. In this\npaper I develop a non-structuralist interpretation of categorical mathematics\nand show its consequences for history of mathematics and mathematics education.",
+    "pdf_url": "http://arxiv.org/pdf/0907.5143v2",
+    "published": "2009-07-29"
+  },
+  "math/0509348v1": {
+    "title": "Instantons: topological aspects",
+    "authors": [
+      "Marcos Jardim"
+    ],
+    "summary": "Short survey to be published at the Encyclopedia of Mathematical Physics.",
+    "pdf_url": "http://arxiv.org/pdf/math/0509348v1",
+    "published": "2005-09-15"
+  },
+  "math/0608711v2": {
+    "title": "Towards a Hermeneutic Categorical Mathematics or why Category theory goes beyond Mathematical Structuralism",
+    "authors": [
+      "Andrei Rodin"
+    ],
+    "summary": "Category theory provides an alternative to Hilbert's Formal Axiomatic method\nand goes beyond Mathematical Structuralism",
+    "pdf_url": "http://arxiv.org/pdf/math/0608711v2",
+    "published": "2006-08-29"
+  },
+  "math-ph/0002018v2": {
+    "title": "Modern Mathematical Physics: what it should be?",
+    "authors": [
+      "Ludwig Faddeev"
+    ],
+    "summary": "Personal view of author on goals and content of Mathematical Physics.",
+    "pdf_url": "http://arxiv.org/pdf/math-ph/0002018v2",
+    "published": "2000-02-08"
+  },
+  "0705.4123v1": {
+    "title": "The Call of Mathematics",
+    "authors": [
+      "S. S. Kutateladze"
+    ],
+    "summary": "A few remarks on how mathematics quests for freedom.",
+    "pdf_url": "http://arxiv.org/pdf/0705.4123v1",
+    "published": "2007-05-28"
+  },
+  "0905.3590v1": {
+    "title": "Desperately seeking mathematical proof",
+    "authors": [
+      "Melvyn B. Nathanson"
+    ],
+    "summary": "Remarks on mathematical proof and the practice of mathematics.",
+    "pdf_url": "http://arxiv.org/pdf/0905.3590v1",
+    "published": "2009-05-22"
+  }
+}

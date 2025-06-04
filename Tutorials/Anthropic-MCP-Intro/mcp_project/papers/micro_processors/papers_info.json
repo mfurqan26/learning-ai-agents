@@ -1,0 +1,22 @@
+{
+  "1204.1179v1": {
+    "title": "C-slow Technique vs Multiprocessor in designing Low Area Customized Instruction set Processor for Embedded Applications",
+    "authors": [
+      "Muhammad Adeel Akram",
+      "Aamir Khan",
+      "Muhammad Masood Sarfaraz"
+    ],
+    "summary": "The demand for high performance embedded processors, for consumer\nelectronics, is rapidly increasing for the past few years. Many of these\nembedded processors depend upon custom built Instruction Ser Architecture (ISA)\nsuch as game processor (GPU), multimedia processors, DSP processors etc.\nPrimary requirement for consumer electronic industry is low cost with high\nperformance and low power consumption. A lot of research has been evolved to\nenhance the performance of embedded processors through parallel computing. But\nsome of them focus superscalar processors i.e. single processors with more\nresources like Instruction Level Parallelism (ILP) which includes Very Long\nInstruction Word (VLIW) architecture, custom instruction set extensible\nprocessor architecture and others require more number of processing units on a\nsingle chip like Thread Level Parallelism (TLP) that includes Simultaneous\nMultithreading (SMT), Chip Multithreading (CMT) and Chip Multiprocessing (CMP).\nIn this paper, we present a new technique, named C-slow, to enhance performance\nfor embedded processors for consumer electronics by exploiting multithreading\ntechnique in single core processors. Without resulting into the complexity of\nmicro controlling with Real Time Operating system (RTOS), C-slowed processor\ncan execute multiple threads in parallel using single datapath of Instruction\nSet processing element. This technique takes low area & approach complexity of\ngeneral purpose processor running RTOS.",
+    "pdf_url": "http://arxiv.org/pdf/1204.1179v1",
+    "published": "2012-04-05"
+  },
+  "2304.04130v1": {
+    "title": "Theory for the Accuracy of Microcomb Photonic Microwave Transversal Signal Processors",
+    "authors": [
+      "David J. Moss"
+    ],
+    "summary": "Photonic RF transversal signal processors, which are equivalent to\nreconfigurable electrical digital signal processors but implemented with\nphotonic technologies, have been widely used for modern high-speed information\nprocessing. With the capability of generating large numbers of wavelength\nchannels with compact micro-resonators, optical microcombs bring new\nopportunities for realizing photonic RF transversal signal processors that have\ngreatly reduced size, power consumption, and complexity. Recently, a variety of\nsignal processing functions have been demonstrated using microcomb-based\nphotonic RF transversal signal processors. Here, we provide detailed analysis\nfor quantifying the processing accuracy of microcomb-based photonic RF\ntransversal signal processors. First, we investigate the theoretical\nlimitations of the processing accuracy determined by tap number, signal\nbandwidth, and pulse waveform. Next, we discuss the practical error sources\nfrom different components of the signal processors. Finally, we analyze the\ncontributions of the theoretical limitations and the experimental factors to\nthe overall processing inaccuracy both theoretically and experimentally. These\nresults provide a useful guide for designing microcomb-based photonic RF\ntransversal signal processors to optimize their accuracy.",
+    "pdf_url": "http://arxiv.org/pdf/2304.04130v1",
+    "published": "2023-04-09"
+  }
+}

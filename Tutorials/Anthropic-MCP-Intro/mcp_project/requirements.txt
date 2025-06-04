@@ -119,8 +119,6 @@ starlette==0.47.0
     # via
     #   mcp-project (pyproject.toml)
     #   mcp
-typing==3.10.0.0
-    # via mcp-project (pyproject.toml)
 typing-extensions==4.14.0
     # via
     #   mcp-project (pyproject.toml)

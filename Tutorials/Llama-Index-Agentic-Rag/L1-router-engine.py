@@ -14,7 +14,7 @@ OPENAI_API_KEY = get_openai_api_key()
 nest_asyncio.apply()
 
 # load documents
-documents = SimpleDirectoryReader(input_files=["metagpt.pdf"]).load_data()
+documents = SimpleDirectoryReader(input_files=["./Tutorials/Llama-Index-Agentic-Rag/metagpt.pdf"]).load_data()
 splitter = SentenceSplitter(chunk_size=1024)
 nodes = splitter.get_nodes_from_documents(documents)
 
@@ -61,4 +61,10 @@ print(len(response.source_nodes))
 response = query_engine.query(
     "How do agents share information with other agents?"
 )
+print(str(response))
+
+# Same router engine defined in utils.py as helper function to use later easily
+from utils import get_router_query_engine
+query_engine = get_router_query_engine("metagpt.pdf")
+response = query_engine.query("Tell me about the ablation study results?")
 print(str(response))

@@ -7,6 +7,13 @@ import base64
 from io import BytesIO
 from PIL import Image
 from IPython.display import display, HTML, Markdown
+from llama_index.llms.openai import OpenAI
+from llama_index.embeddings.openai import OpenAIEmbedding
+from llama_index.core import SimpleDirectoryReader, Settings, SummaryIndex, VectorStoreIndex
+from llama_index.core.tools import QueryEngineTool
+from llama_index.core.query_engine.router_query_engine import RouterQueryEngine
+from llama_index.core.selectors import LLMSingleSelector
+from llama_index.core.node_parser import SentenceSplitter
 
 # these expect to find a .env file at the directory above the lesson.                                                                                                                     # the format for that file is (without the comment)                                                                                                                                       #API_KEYNAME=AStringThatIsTheLongAPIKeyFromSomeService                                                                                                                                     
 def load_env():
@@ -34,6 +41,52 @@ def get_multi_on_api_key():
 def get_multi_on_client():
     multi_on_api_key = get_multi_on_api_key()
     return MultiOn(api_key=multi_on_api_key)
+
+# Router Query Engine for llama-index RAG
+def get_router_query_engine(file_path: str, llm = None, embed_model = None):
+    """Get router query engine."""
+    llm = llm or OpenAI(model="gpt-4o-mini")
+    embed_model = embed_model or OpenAIEmbedding(model="text-embedding-ada-002")
+    
+    # load documents
+    documents = SimpleDirectoryReader(input_files=[file_path]).load_data()
+    
+    splitter = SentenceSplitter(chunk_size=1024)
+    nodes = splitter.get_nodes_from_documents(documents)
+    
+    summary_index = SummaryIndex(nodes)
+    vector_index = VectorStoreIndex(nodes, embed_model=embed_model)
+    
+    summary_query_engine = summary_index.as_query_engine(
+        response_mode="tree_summarize",
+        use_async=True,
+        llm=llm
+    )
+    vector_query_engine = vector_index.as_query_engine(llm=llm)
+    
+    summary_tool = QueryEngineTool.from_defaults(
+        query_engine=summary_query_engine,
+        description=(
+            "Useful for summarization questions related to MetaGPT"
+        ),
+    )
+    
+    vector_tool = QueryEngineTool.from_defaults(
+        query_engine=vector_query_engine,
+        description=(
+            "Useful for retrieving specific context from the MetaGPT paper."
+        ),
+    )
+    
+    query_engine = RouterQueryEngine(
+        selector=LLMSingleSelector.from_defaults(),
+        query_engine_tools=[
+            summary_tool,
+            vector_tool,
+        ],
+        verbose=True
+    )
+    return query_engine
 
 # Params
 async def visualizeCourses(result, screenshot, target_url, instructions, base_url):

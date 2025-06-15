@@ -12,7 +12,7 @@ OPENAI_API_KEY = get_openai_api_key()
 nest_asyncio.apply()
 
 # load documents
-documents = SimpleDirectoryReader(input_files=["./Tutorials/Llama-Index-Agentic-Rag/metagpt.pdf"]).load_data()
+documents = SimpleDirectoryReader(input_files=["./Tutorials/Llama-Index-Agentic-Rag/papers/metagpt.pdf"]).load_data()
 splitter = SentenceSplitter(chunk_size=1024)
 nodes = splitter.get_nodes_from_documents(documents)
 

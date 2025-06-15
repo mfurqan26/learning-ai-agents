@@ -107,9 +107,9 @@ def get_doc_tools(
         query: str, 
         page_numbers: Optional[List[str]] = None
     ) -> str:
-        """Use to answer questions over the MetaGPT paper.
+        """Use to answer questions over a given paper.
     
-        Useful if you have specific questions over the MetaGPT paper.
+        Useful if you have specific questions over the paper.
         Always leave page_numbers as None UNLESS there is a specific page you want to search for.
     
         Args:
@@ -150,8 +150,7 @@ def get_doc_tools(
         name=f"summary_tool_{name}",
         query_engine=summary_query_engine,
         description=(
-            "Use ONLY IF you want to get a holistic summary of MetaGPT. "
-            "Do NOT use if you have specific questions over MetaGPT."
+            f"Useful for summarization questions related to {name}"
         ),
     )
 

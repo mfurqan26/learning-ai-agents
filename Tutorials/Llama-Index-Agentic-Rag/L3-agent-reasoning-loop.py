@@ -11,7 +11,7 @@ from llama_index.core.agent import FunctionCallingAgentWorker, AgentRunner
 OPENAI_API_KEY = get_openai_api_key()
 nest_asyncio.apply()
 
-vector_tool, summary_tool = get_doc_tools("./Tutorials/Llama-Index-Agentic-Rag/metagpt.pdf", "metagpt")
+vector_tool, summary_tool = get_doc_tools("./Tutorials/Llama-Index-Agentic-Rag/papers/metagpt.pdf", "metagpt")
 
 # Set up agent worker and runner
 llm = OpenAI(model="gpt-4o-mini", temperature=0)

@@ -8,8 +8,6 @@ from llama_index.core.selectors import LLMSingleSelector
 from llama_index.llms.openai import OpenAI
 from llama_index.embeddings.openai import OpenAIEmbedding
 
-
-
 OPENAI_API_KEY = get_openai_api_key()
 nest_asyncio.apply()
 

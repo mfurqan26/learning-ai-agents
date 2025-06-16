@@ -33,7 +33,7 @@ class Queries(BaseModel):
     
 class ewriter():
     def __init__(self):
-        self.model = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+        self.model = ChatOpenAI(model="gpt-4o-mini", temperature=0)
         self.PLAN_PROMPT = ("You are an expert writer tasked with writing a high level outline of a short 3 paragraph essay. "
                             "Write such an outline for the user provided topic. Give the three main headers of an outline of "
                              "the essay along with any relevant notes or instructions for the sections. ")
